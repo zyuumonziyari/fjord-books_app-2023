@@ -23,7 +23,9 @@ class Report < ApplicationRecord
 
   def save_with_mentions
     transaction do
-      save && save_mentions
+      raise ActiveRecord::Rollback unless save && save_mentions
+
+      true
     end
   end
 
