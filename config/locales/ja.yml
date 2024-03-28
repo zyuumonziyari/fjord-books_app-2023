@@ -29,17 +29,17 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+ja:
   books:
-      index: 'Index'
-      editing_book: 'Editing Book'
-      additional_new_book: 'New Book'
-      title: 'Title'
-      memo: 'Memo'
-      author: 'Author'
-      image: 'Image'
-      add_new_book: 'Add new book'
-      back_to_index: 'Back to index'
-      move_to_detail: 'Move to detail'
-      edit_book: "Edit this book"
-      destroy_book: "Destroy this book"
+      index: '本の一覧'
+      editing_book: '本の編集'
+      additional_new_book: '新しい本の追加'
+      title: 'タイトル'
+      memo: 'メモ'
+      author: '著者'
+      image: '画像'
+      add_new_book: '新しい本を追加する'
+      back_to_index: '一覧へ戻る'
+      move_to_detail: '詳細ページへ'
+      edit_book: "本を編集する"
+      destroy_book: "本を削除する"
