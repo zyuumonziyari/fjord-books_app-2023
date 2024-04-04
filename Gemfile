@@ -81,3 +81,5 @@ end
 
 gem 'carrierwave'
 gem 'devise'
+gem 'erd'
+gem 'ruby-graphviz'
