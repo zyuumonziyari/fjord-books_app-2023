@@ -32,19 +32,19 @@
 en:
   books:
     page_title:
-      index: 'Index'
+      index: 'Books'
       editing_book: 'Editing Book'
       additional_new_book: 'New Book'
     page_link:
       add_new_book: 'Add new book'
-      back_to_index: 'Back to index'
-      move_to_detail: 'Move to detail'
+      back_to_index: 'Back to Books'
+      move_to_detail: 'Detail'
       edit_book: 'Edit this book'
       destroy_book: 'Destroy this book'
   notice:
     create:
-      success: 'Book was successfully created.'
+      success: '%{title} was successfully created.'
     update:
-      success: 'Book was successfully updated.'
+      success: '%{title} was successfully updated.'
     destroy:
-      success: 'Book was successfully destroyed.'
+      success: '%{title} was successfully destroyed.'

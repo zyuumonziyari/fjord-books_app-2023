@@ -43,8 +43,8 @@ ja:
       destroy_book: '本を削除する'
   notice:
     create:
-      success: '本を作成しました'
+      success: '%{title}を作成しました'
     update:
-      success: '本を更新しました'
+      success: '%{title}を更新しました'
     destroy:
-      success: '本を削除しました'
+      success: '%{title}を削除しました'
