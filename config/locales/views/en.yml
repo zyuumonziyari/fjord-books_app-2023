@@ -31,17 +31,21 @@
 
 en:
   books:
-    page_title:
-      index: 'Books'
-      editing_book: 'Editing Book'
-      additional_new_book: 'New Book'
-    page_link:
+    index:
+      title: 'Books'
+      move_to_detail: 'Detail'
       add_new_book: 'Add new book'
+    new:
+      title: 'New Book'
+      back_to_index: 'Back to Books'
+    show:
+      edit_book: 'Edit this book'
+      back_to_index: 'Back to Books'
+      destroy_book: 'Destroy this book'
+    edit:
+      title: 'Editing Book'
       back_to_index: 'Back to Books'
       move_to_detail: 'Detail'
-      edit_book: 'Edit this book'
-      destroy_book: 'Destroy this book'
-  notice:
     create:
       success: '%{title} was successfully created.'
     update:

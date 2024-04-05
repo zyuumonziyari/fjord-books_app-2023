@@ -31,17 +31,21 @@
 
 ja:
   books:
-    page_title:
-      index: '本の一覧'
-      editing_book: '本の編集'
-      additional_new_book: '新しい本の追加'
-    page_link:
+    index:
+      title: '本の一覧'
+      move_to_detail: '詳細ページへ'
       add_new_book: '新しい本を追加する'
+    new:
+      title: '新しい本の追加'
+      back_to_index: '一覧へ戻る'
+    show:
+      edit_book: '本を編集する'
+      back_to_index: '一覧へ戻る'
+      destroy_book: '本を削除する'
+    edit:
+      title: '本の編集' 
       back_to_index: '一覧へ戻る'
       move_to_detail: '詳細ページへ'
-      edit_book: '本を編集する'
-      destroy_book: '本を削除する'
-  notice:
     create:
       success: '%{title}を作成しました'
     update:
