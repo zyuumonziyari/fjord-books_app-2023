@@ -1,18 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<h1><%= t('books.page_title.index') %></h1>
+<h1><%= t '.title' %></h1>
 
 <div id="books" class="index-items">
   <% @books.each do |book| %>
     <div class="index-item">
       <%= render book %>
       <p>
-        <%= link_to t('books.page_link.move_to_detail'), book %>
+        <%= link_to t('.move_to_detail'), book %>
       </p>
     </div>
   <% end %>
 </div>
 
 <nav class="page-nav">
-  <%= link_to t('books.page_link.add_new_book'), new_book_path %>
+  <%= link_to t('.add_new_book'), new_book_path %>
 </nav>
