@@ -1,2 +1,7 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1><%= @user.name %></h1>
+
+<%= render @user %>
+
+<div>
+  <%= link_to "Back to users", users_path %>
+</div>
