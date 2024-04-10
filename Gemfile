@@ -71,6 +71,9 @@ group :development do
   gem 'rubocop', '~> 1.45.1', require: false
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
+  gem 'erd'
+  gem 'ruby-graphviz'
+  gem 'letter_opener_web', '~> 2.0'
 end
 
 group :test do
@@ -81,6 +84,4 @@ end
 
 gem 'carrierwave'
 gem 'devise'
-gem 'erd'
-gem 'ruby-graphviz'
 gem 'kaminari'
