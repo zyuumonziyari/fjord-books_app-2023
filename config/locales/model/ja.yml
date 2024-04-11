@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      book: '本'
+      user: 'ユーザー'
+    attributes:
+      book:
+        title: 'タイトル'
+        memo: 'メモ'
+        author: '著者'
+        image: '画像'
+      user:
+        name: '名前'
+        profile_text: '自己紹介'
+        address: '住所'
+        post_number: '郵便番号'
+        

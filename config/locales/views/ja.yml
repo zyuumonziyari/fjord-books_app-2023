@@ -1,0 +1,49 @@
+ja:
+  navbar:
+    logged_in_as: 'ログイン中：'
+    edit_profile: 'プロフィール編集'
+    logout: 'ログアウト'
+    sign_up: '新規登録'
+    login: 'ログイン'
+  alerts:
+    success: '成功：'
+    danger: 'エラー：'
+  users:
+    index:
+      title_index: 'ユーザー一覧'
+      move_to_detail: '詳細ページへ'
+    show:
+      back_to_users: 'ユーザー一覧へ戻る'
+  books:
+    index:
+      title: '本の一覧'
+      move_to_detail: '詳細ページへ'
+      add_new_book: '新しい本を追加する'
+    new:
+      title: '新しい本の追加'
+      back_to_index: '一覧へ戻る'
+    show:
+      edit_book: '本を編集する'
+      back_to_index: '一覧へ戻る'
+      destroy_book: '本を削除する'
+    edit:
+      title: '本の編集' 
+      back_to_index: '一覧へ戻る'
+      move_to_detail: '詳細ページへ'
+    create:
+      success: '%{title}を作成しました'
+    update:
+      success: '%{title}を更新しました'
+    destroy:
+      success: '%{title}を削除しました'
+  devise:
+    registrations:
+      edit:
+        title_edit: 'アカウント編集'
+        minimum_characters: '文字以上必要です'
+        input_current_password: '変更には現在のパスワードを入力してください'
+        update_account: '更新する'
+        delete_account: 'アカウントを削除する'
+        back_to_users: 'ユーザー一覧へ戻る'
+        delete_confirm: '%{name}:%{email}を本当に削除してもよろしいですか'
+
