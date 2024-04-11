@@ -85,3 +85,4 @@ end
 gem 'carrierwave'
 gem 'devise'
 gem 'kaminari'
+gem 'devise-i18n'
