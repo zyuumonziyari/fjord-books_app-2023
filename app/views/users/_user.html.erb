@@ -1,11 +1,11 @@
 <div id="<%= dom_id user %>">
   <p>
-    <strong>Name:</strong>
+    <strong><%= User.human_attribute_name(:name) %></strong>
     <%= user.name %>
   </p>
 
   <p>
-    <strong>Profile_text:</strong>
+    <strong><%= User.human_attribute_name(:profile_text) %></strong>
     <%= user.profile_text %>
   </p>
 

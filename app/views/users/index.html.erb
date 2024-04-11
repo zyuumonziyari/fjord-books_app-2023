@@ -1,12 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
+<h1><%= t '.title_index' %></h1>
 
 <div id="users">
   <% @users.each do |user| %>
     <%= render user %>
     <p>
-      <%= link_to "Show this user", user_path(user) %>
+      <%= link_to t('.move_to_detail'), user_path(user) %>
     </p>
   <% end %>
   <%= paginate @users %>
