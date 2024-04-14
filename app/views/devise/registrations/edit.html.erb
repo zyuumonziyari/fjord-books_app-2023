@@ -1,4 +1,4 @@
-<h2><%= t('.title_edit') %></h2>
+<h2><%= t('.title') %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -18,12 +18,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %><%= t('.minimum_characters') %></em>
-    <% end %>
+      <em><%= @minimum_password_length %><%= t('views.common.minimum_password_length') %></em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
@@ -32,7 +31,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i><%= t('.input_current_password') %></i><br />
+    <%= f.label :current_password %> <i><%= t('.we_need_your_current_password_to_confirm_your_changes') %></i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -51,13 +50,11 @@
     <%= f.text_area :address, autofocus: true, autocomplete: "address", size: "50x10" %>
   </div>
 
-
-
   <div class="actions">
-    <%= f.submit t('.update_account') %>
+    <%= f.submit t('.update') %>
   </div>
 <% end %>
 
-<div><%= button_to t('.delete_account'), registration_path(resource_name), data: { confirm: t('.delete_confirm', name: current_user.name, email: current_user.email), turbo_confirm: t('.delete_confirm', name: current_user.name, email: current_user.email) }, method: :delete %></div>
+<div><%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure', name: current_user.name, email: current_user.email), turbo_confirm: t('.are_you_sure', name: current_user.name, email: current_user.email) }, method: :delete %></div>
 
-<%= link_to t('.back_to_users'), :users %>
+<%= link_to t('views.common.back_to_index'), :users %>

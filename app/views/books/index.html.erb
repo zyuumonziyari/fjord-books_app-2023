@@ -1,14 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Books</h1>
+<h1><%= t('views.common.title_index', name: (Book.model_name.human)) %></h1>
 
 <div id="books">
   <% @books.each do |book| %>
     <%= render book %>
     <p>
-      <%= link_to "Show this book", book %>
+      <%= link_to t('views.common.move_to_detail'), book %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New book", new_book_path %>
+<%= paginate @books %>
+<%= link_to t('.add_new_book'), new_book_path %>
