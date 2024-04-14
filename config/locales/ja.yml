@@ -1,0 +1,37 @@
+ja:
+  views:
+    common:
+      move_to_detail: '詳細ページへ'
+      back_to_index: '一覧へ戻る'
+      title_index: '%{name}の一覧'
+      minimum_password_length: '文字以上入力してください'
+    pagination:
+      first: '&laquo; 最初'
+      last: '最後 &raquo;'
+      next: '次 &rsaquo;'
+      previous: '&lsaquo; 前'
+      truncate: '&hellip;'
+  layouts:
+    application:
+      logged_in_as: 'ログイン中'
+      edit_profile: 'プロフィール編集'
+      logout: 'ログアウト'
+  books:
+    index:
+      add_new_book: '新しい本を追加する'
+    new:
+      title_new: '新しい本の追加'
+    edit:
+      title_edit: '本の編集' 
+    show:
+      edit: '本を編集する'
+      destroy: '本を削除する'
+  devise:
+    registrations:
+      edit:
+        title: 'アカウント編集'
+  controllers:
+    common:
+      notice_create: '%{title}を作成しました'
+      notice_update: '%{title}を更新しました'
+      notice_destroy: '%{title}を削除しました'
