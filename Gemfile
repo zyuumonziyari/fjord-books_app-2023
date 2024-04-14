@@ -68,12 +68,12 @@ group :development do
   gem 'erb_lint', require: false
   # 以下のPRがリリースされたら最新のrubocopを使うようにする
   # https://github.com/fjordllc/rubocop-fjord/pull/16
+  gem 'erd'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'rubocop', '~> 1.45.1', require: false
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
-  gem 'erd'
   gem 'ruby-graphviz'
-  gem 'letter_opener_web', '~> 2.0'
 end
 
 group :test do
@@ -84,6 +84,6 @@ end
 
 gem 'carrierwave'
 gem 'devise'
-gem 'kaminari'
 gem 'devise-i18n'
+gem 'kaminari'
 gem 'rails-i18n'
