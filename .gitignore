@@ -39,7 +39,6 @@
 .env
 db/*
 test/*
-.vscode/
 config/locales/en.yml
 config/locales/devise.views.ja.yml
 app/controllers/users/confirmations_controller.rb
