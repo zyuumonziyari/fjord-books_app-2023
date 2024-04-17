@@ -321,6 +321,7 @@ DEPENDENCIES
   erb_lint
   faker
   i18n_generators
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   kaminari
@@ -333,7 +334,7 @@ DEPENDENCIES
   ruby-vips (~> 2.2, >= 2.2.1)
   selenium-webdriver
   sprockets-rails
-  sqlite3
+  sqlite3g
   stimulus-rails
   turbo-rails
   tzinfo-data
