@@ -12,4 +12,3 @@ class User < ApplicationRecord
     errors.add(:avatar, :avatar_content_type) if avatar.attached? && !avatar.content_type.in?(%w[image/jpeg image/png image/gif])
   end
 end
-bun
