@@ -2,10 +2,10 @@
 <% if user.avatar.attached? %>  
   <p>
     <strong><%= User.human_attribute_name(:avatar) %>:</strong>
-    <%= image_tag user.avatar.variant(:thumb) %>
+      <%= image_tag user.avatar.variant(:thumb) %>
   </p>
 <% end %>
-  
+
   <p>
     <strong><%= User.human_attribute_name(:email) %>:</strong>
     <%= user.email %>
