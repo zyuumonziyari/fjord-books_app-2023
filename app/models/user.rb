@@ -7,11 +7,9 @@ class User < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [300, 300]
   end
   validate :avatar_content_type
-  
+
   def avatar_content_type
-    if avatar.attached? && !avatar.content_type.in?(%w[image/jpeg image/png image/gif])
-      errors.add(:avatar,:avatar_content_type)
-    end
+    errors.add(:avatar, :avatar_content_type) if avatar.attached? && !avatar.content_type.in?(%w[image/jpeg image/png image/gif])
   end
-  
 end
+bun
