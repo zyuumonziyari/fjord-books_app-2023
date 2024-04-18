@@ -2,7 +2,12 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+  <% if current_user.avatar.attached? %>  
+  <div>
+    <p><%= User.human_attribute_name(:avatar) %></p>
+    <%= image_tag current_user.avatar.variant(:thumb) %>
+  </div>
+  <% end %>
   <div class="field">
     <%= f.label :avatar %><br />
     <%= f.file_field :avatar %>
