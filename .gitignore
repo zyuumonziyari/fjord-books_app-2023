@@ -37,7 +37,6 @@
 /public/uploads
 
 .env
-db/*
 test/*
 config/locales/en.yml
 config/locales/devise.views.ja.yml
