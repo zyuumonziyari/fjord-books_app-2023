@@ -1,0 +1,17 @@
+<%= form_with(model: [commentable, message], local: false) do |form| %>
+  <%= form.text_area :content, rows:'5', placeholder: "コメントする", id: "comment_textarea" %>
+  <%= form.submit "送信" %>
+<% end %>
+
+<div id="comments">
+  <% @report.messages.each do |message| %>
+    <div class="message">
+      <p><strong>User:</strong> <%= message.user.name %></p>
+      <p><strong>Date:</strong> <%= message.created_at %></p>
+      <p><strong>Content:</strong> <%= message.content %></p>
+    </div>
+    <% if message.user == current_user %>
+      <%= link_to "Destroy", report_message_path(@report, message), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
