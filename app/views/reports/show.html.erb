@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<h1>Reports</h1>
 
 <%= render @report %>
 
-<div>
-  <%= link_to "Edit this report", edit_report_path(@report) %> |
-  <%= link_to "Back to reports", reports_path %>
+<% if @report.user == current_user %>
+  <div>
+    <%= link_to "Edit this report", edit_report_path(@report) %> |
+    <%= link_to "Back to reports", reports_path %>
+    <%= button_to "Destroy this report", @report, method: :delete %>
+  </div>
+<% end %>
 
-  <%= button_to "Destroy this report", @report, method: :delete %>
+<h2>コメント</h2>
+
+<%= render partial: 'shared/comment_form', locals: { commentable: @report, message: @message } %>
+
+<div>
+  <%= link_to "Back to reports", reports_path %>
 </div>
