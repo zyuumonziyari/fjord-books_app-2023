@@ -29,9 +29,9 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
         name: '名前'
-        profile_text: '自己紹介'
+        self_introduction: '自己紹介'
         address: '住所'
-        post_number: '郵便番号'
+        postal_code: '郵便番号'
       book:
         title: 'タイトル'
         memo: 'メモ'

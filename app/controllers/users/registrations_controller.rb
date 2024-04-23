@@ -70,7 +70,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[name profile_text address post_number])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name self_introduction address postal_code])
   end
 
   def after_update_path_for(resource)
