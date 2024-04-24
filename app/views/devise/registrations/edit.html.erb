@@ -55,6 +55,13 @@
   </div>
 <% end %>
 
-<div><%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure', name: current_user.name, email: current_user.email), turbo_confirm: t('.are_you_sure', name: current_user.name, email: current_user.email) }, method: :delete %></div>
+<div>
+  <%= button_to t('.cancel_my_account'), registration_path(resource_name),
+                  data: {
+                    confirm: t('.are_you_sure', name: current_user.name, email: current_user.email),
+                    turbo_confirm: t('.are_you_sure', name: current_user.name, email: current_user.email)
+                  },
+                  method: :delete %>
+</div>
 
 <%= link_to t('views.common.back', name: User.model_name.human), users_path %>
