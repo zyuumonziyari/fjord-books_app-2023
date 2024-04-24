@@ -23,7 +23,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to book_url(@book), notice: t('controllers.common.notice_create', title: @book.title)
+      redirect_to @book, notice: t('controllers.common.notice_create', title: @book.title)
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
-      redirect_to book_url(@book), notice: t('controllers.common.notice_update', title: @book.title)
+      redirect_to @book, notice: t('controllers.common.notice_update', title: @book.title)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
   # DELETE /books/1
   def destroy
     @book.destroy
-    redirect_to books_url, notice: t('controllers.common.notice_destroy', title: @book.title)
+    redirect_to books_path, notice: t('controllers.common.notice_destroy', title: @book.title)
   end
 
   private
