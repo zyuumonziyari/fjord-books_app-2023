@@ -34,7 +34,7 @@ Book.create!(
 )
 
 50.times do
-Book.create!(
+  Book.create!(
     title: Faker::Book.title,
     memo: Faker::Book.genre,
     author: Faker::Book.author,
