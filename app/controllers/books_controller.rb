@@ -9,7 +9,9 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1 or /books/1.json
-  def show; end
+  def show
+    @message = Message.new
+  end
 
   # GET /books/new
   def new
@@ -30,7 +32,7 @@ class BooksController < ApplicationController
   end
 
   # PATCH/PUT /books/1 or /books/1.json
-  def updat
+  def update
     if @book.update(book_params)
       redirect_to book_url(@book), notice: t('controllers.common.notice_update', name: Book.model_name.human)
     else
