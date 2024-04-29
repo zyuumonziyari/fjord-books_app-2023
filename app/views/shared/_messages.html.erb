@@ -1,0 +1,11 @@
+<div id="messages">
+  <% commentable.messages.each do |message| %>
+    <div class="message-item">
+      <%= render message %>
+      <% if message.user == current_user %>
+        <%= button_to t('views.common.destroy', name: Message.model_name.human.downcase), message_path(message), method: :delete %>
+      <% end %>
+      <br>
+    </div>
+  <% end %>
+</div>
