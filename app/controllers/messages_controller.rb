@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     end
 
     message = commentable.messages.build(message_params)
-    message.user_id = current_user.id 
+    message.user_id = current_user.id
     message.save
     redirect_to polymorphic_path(commentable), notice: t('controllers.common.notice_create', name: Message.model_name.human)
   end
