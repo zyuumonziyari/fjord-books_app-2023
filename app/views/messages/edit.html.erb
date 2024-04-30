@@ -1,0 +1,5 @@
+<%= form_with(model: [@commentable, @message], local: false) do |form| %>
+    <%= form.text_area :content, rows:'5', value: @message.content, id: "comment_textarea", required: true %>
+    <%= form.submit %>
+  <% end %>
+  
