@@ -16,11 +16,6 @@ class MessagesController < ApplicationController
 
   def edit
     @message = Message.find(params[:id])
-    if params[:report_id].present?
-      @commentable = Report.find(params[:report_id])
-    elsif params[:book_id].present?
-      @commentable = Book.find(params[:book_id])
-    end
   end
 
   def update
