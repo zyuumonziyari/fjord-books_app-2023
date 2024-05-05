@@ -1,11 +1,7 @@
 <h1><%= t('views.common.title_edit', name: Message.model_name.human.downcase) %></h1>
 
-<%= form_with(model: [@message], local: false) do |form| %>
-  <%= form.text_area :content, rows:'5', value: @message.content, id: "comment_textarea", required: true %>
+<%= form_with(model: [@message]) do |form| %>
+  <%= form.text_area :content, rows:'5', value: @message.content, required: true %>
   <%= form.submit %>
 <% end %>
-<% if @message.commentable_type == "Report" %>
-  <%= link_to t('views.common.show', name: i18n_pluralize(Report.model_name.human.downcase)), @message.commentable %>
-<% elsif @message.commentable_type == "Book" %>
-  <%= link_to t('views.common.show', name: i18n_pluralize(Book.model_name.human.downcase)), @message.commentable %>
-<% end %>
+<%= link_to t('views.common.show', name: @message.commentable.model_name.human.downcase), @message.commentable %>
