@@ -5,6 +5,7 @@ ja:
       user: ユーザ
       report: 日報
       message: コメント
+      
     attributes:
       book:
         author: 著者
