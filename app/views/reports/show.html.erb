@@ -13,7 +13,7 @@
   <% end %>
 </div>
 
-<h2>コメント</h2>
+<h2><%= t(Message.model_name.human) %></h2>
 
 <%= render partial: 'shared/message_post_form', locals: { commentable: @report, message: @message } %>
 <%= render partial: 'shared/messages', locals: { commentable: @report, message: @message } %>
