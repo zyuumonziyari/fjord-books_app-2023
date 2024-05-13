@@ -4,6 +4,17 @@
   <%= render @report %>
 </div>
 
+<% if @report.mentioned_reports.present? %>
+  <h3>この日報に言及している日報</h3>
+  <div id="books" class="mentioned-items">
+    <% @report.mentioned_reports.each do |report| %>
+      <div class="index-item">
+        <%= render report %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <%= render 'shared/comments', commentable: @report %>
 
 <nav class="page-nav">
