@@ -11,8 +11,11 @@ class MessagesController < ApplicationController
     end
     message = commentable.messages.build(message_params)
     message.user_id = current_user.id
-    message.save
-    redirect_to polymorphic_path(commentable), notice: t('controllers.common.notice_create', name: Message.model_name.human)
+    if message.save
+      redirect_to polymorphic_path(commentable), notice: t('controllers.common.notice_create', name: Message.model_name.human)    
+    else
+      redirect_to polymorphic_path(commentable), notice: t('controllers.common.notice_falese', name: Message.model_name.human)    
+    end
   end
 
   def edit; end
