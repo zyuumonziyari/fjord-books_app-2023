@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_20_071834) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_02_071733) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_20_071834) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -50,23 +50,33 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_20_071834) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "content"
+  create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "commentable_type", null: false
     t.integer "commentable_id", null: false
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["commentable_type", "commentable_id"], name: "index_messages_on_commentable"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "mention_reports", force: :cascade do |t|
+    t.integer "mentioning_reports_id"
+    t.integer "mentioned_reports_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentioned_reports_id", "mentioning_reports_id"], name: "index_mention_reports_on_ids", unique: true
+    t.index ["mentioned_reports_id"], name: "index_mention_reports_on_mentioned_reports_id"
+    t.index ["mentioning_reports_id"], name: "index_mention_reports_on_mentioning_reports_id"
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
@@ -89,6 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_20_071834) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "users"
-  add_foreign_key "messages", "users"
+  add_foreign_key "comments", "users"
   add_foreign_key "reports", "users"
 end

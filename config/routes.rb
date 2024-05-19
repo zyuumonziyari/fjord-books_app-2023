@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :books
   resources :users, only: %i(index show)
   resources :reports, :books do
-    resources :messages, only: %i(create edit update destroy), shallow: true
+    resources :comments, only: %i(create edit update destroy), shallow: true
   end
 end

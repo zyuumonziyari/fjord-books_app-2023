@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1 or /reports/1.json
   def show
-    @message = Message.new
+    @comment = Comment.new
   end
 
   # GET /reports/new
