@@ -1,4 +1,0 @@
-<%= form_with(model: [commentable, message], local: false) do |form| %>
-  <%= form.text_area :content, rows:'5', placeholder: "コメントする", id: "comment_textarea", required: true %>
-  <%= form.submit %>
-<% end %>

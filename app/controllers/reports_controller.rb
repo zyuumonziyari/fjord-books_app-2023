@@ -62,4 +62,6 @@ class ReportsController < ApplicationController
   def authorize_user
     redirect_to reports_path, alert: t('controllers.common.aleart_no_authority') if @report.user != current_user
   end
+  
+  
 end

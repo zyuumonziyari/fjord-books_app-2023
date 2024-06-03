@@ -1,7 +1,0 @@
-<h1><%= t('views.common.title_edit', name: Message.model_name.human.downcase) %></h1>
-
-<%= form_with(model: [@message]) do |form| %>
-  <%= form.text_area :content, rows:'5', value: @message.content, required: true %>
-  <%= form.submit %>
-<% end %>
-<%= link_to t('views.common.show', name: @message.commentable.model_name.human.downcase), @message.commentable %>

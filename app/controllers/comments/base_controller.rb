@@ -1,20 +1,16 @@
 # frozen_string_literal: true
 
-class CommentsController < ApplicationController
+class Comments::BaseController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
+  before_action :set_commentable, only: %i[create]
 
   def create
-    if params[:report_id].present?
-      commentable = Report.find(params[:report_id])
-    elsif params[:book_id].present?
-      commentable = Book.find(params[:book_id])
-    end
-    comment = commentable.comments.build(comment_params)
+    comment = @commentable.comments.build(comment_params)
     comment.user_id = current_user.id
     if comment.save
-      redirect_to polymorphic_path(commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)    
+      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      redirect_to polymorphic_path(commentable), notice: t('controllers.common.notice_falese', name: Comment.model_name.human)    
+      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_false', name: Comment.model_name.human)
     end
   end
 
@@ -29,7 +25,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-  @comment.destroy
+    @comment.destroy
     redirect_to polymorphic_path(@comment.commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
@@ -41,5 +37,9 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def set_commentable
+    raise NotImplementedError, "#{self.class} must implement the set_commentable method"
   end
 end
