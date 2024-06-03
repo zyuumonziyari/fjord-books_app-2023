@@ -1,11 +1,7 @@
 <div id="<%= dom_id comment %>">
   <p>
     <strong><%= User.model_name.human %>:</strong>
-    <% if comment.user.name? %>
-      <%= comment.user.name %>
-    <% else %>
-      <%= comment.user.email %>
-    <% end %>
+    <%= comment.display_user_name %>
   </p>
   <p>
     <strong><%= Comment.human_attribute_name(:content) %>:</strong>
@@ -13,6 +9,6 @@
   </p>
   <p>
     <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
-    <%= comment.created_at.strftime('%Y/%m/%d - %H:%M') %>
+    <%= l(comment.created_at, formats: :dafault) %>
   </p>
 </div>
