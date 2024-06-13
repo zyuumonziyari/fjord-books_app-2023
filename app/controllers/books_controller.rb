@@ -10,7 +10,8 @@ class BooksController < ApplicationController
 
   # GET /books/1 or /books/1.json
   def show
-    @comment = Comment.new
+    comment = Comment.new
+    render :show, locals: { book: @book, comment: comment }
   end
 
   # GET /books/new
