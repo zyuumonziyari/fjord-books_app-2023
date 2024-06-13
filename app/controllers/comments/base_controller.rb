@@ -10,7 +10,7 @@ class Comments::BaseController < ApplicationController
     if comment.save
       redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_false', name: Comment.model_name.human)
+      render 'reports/show', locals: { report: @commentable, comment: comment }, status: :unprocessable_entity
     end
   end
 

@@ -10,8 +10,11 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1 or /reports/1.json
+  #view内でインスタンス変数ではなく、ローカル変数として使用させる。
+  #commentコントローラのcreate失敗アクションにて、render先に、インスタンス変数を渡すことができないから。
   def show
-    @comment = Comment.new
+    comment = Comment.new
+    render :show, locals: { report: @report, comment: comment }
   end
 
   # GET /reports/new
