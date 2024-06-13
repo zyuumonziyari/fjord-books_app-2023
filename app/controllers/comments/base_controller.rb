@@ -25,7 +25,7 @@ class Comments::BaseController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @comment.destroy!
     redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
