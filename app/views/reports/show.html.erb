@@ -1,6 +1,6 @@
 <h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
 
-<%= render partial: 'reports/report', locals: { report: report } %>
+<%= render partial: 'reports/report', locals: { report: } %>
 
 <div>
   <% if report.user == current_user %>
