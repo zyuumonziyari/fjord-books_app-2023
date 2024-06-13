@@ -1,7 +1,7 @@
 <div id="<%= dom_id comment %>">
   <p>
     <strong><%= User.model_name.human %>:</strong>
-    <%= comment.display_user_name %>
+    <%= comment.user.display_user_name %>
   </p>
   <p>
     <strong><%= Comment.human_attribute_name(:content) %>:</strong>
