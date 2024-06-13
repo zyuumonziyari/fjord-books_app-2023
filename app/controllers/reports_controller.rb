@@ -10,8 +10,6 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1 or /reports/1.json
-  #view内でインスタンス変数ではなく、ローカル変数として使用させる。
-  #commentコントローラのcreate失敗アクションにて、render先に、インスタンス変数を渡すことができないから。
   def show
     comment = Comment.new
     render :show, locals: { report: @report, comment: comment }
@@ -29,7 +27,7 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.build(report_params)
     if @report.save
-      redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Book.model_name.human)
+      redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +36,7 @@ class ReportsController < ApplicationController
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
     if @report.update(report_params)
-      redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Book.model_name.human)
+      redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -47,7 +45,7 @@ class ReportsController < ApplicationController
   # DELETE /reports/1 or /reports/1.json
   def destroy
     @report.destroy
-    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Book.model_name.human)
+    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
   private
