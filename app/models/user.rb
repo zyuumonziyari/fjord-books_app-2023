@@ -9,8 +9,8 @@ class User < ApplicationRecord
   end
   has_many :books, dependent: :destroy
   has_many :reports, dependent: :destroy
-  
+
   def display_user_name
-    name.present? ? name : email
+    name.presence || email
   end
 end
