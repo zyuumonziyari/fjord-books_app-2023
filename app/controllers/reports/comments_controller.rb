@@ -3,7 +3,7 @@
 module Reports
   class CommentsController < Comments::BaseController
     def render_commentable(comment)
-      render 'reports/show', locals: { report: @commentable, comment: comment }, status: :unprocessable_entity  
+      render 'reports/show', locals: { report: @commentable, comment: }, status: :unprocessable_entity
     end
 
     private
