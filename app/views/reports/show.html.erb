@@ -15,5 +15,5 @@
 
 <h2><%= t(Comment.model_name.human) %></h2>
 
-<%= render partial: 'shared/comment_post_form', locals: { commentable: report, comment: comment } %>
-<%= render partial: 'shared/comments', locals: { commentable: report, comment: comment } %>
+<%= render partial: 'shared/comment_post_form', locals: { commentable: report, comment: } %>
+<%= render partial: 'shared/comments', locals: { commentable: report, comment: } %>
