@@ -9,8 +9,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    comment = Comment.new
-    render :show, locals: { report: @report, comment: }
+    @comment = Comment.new
   end
 
   def new

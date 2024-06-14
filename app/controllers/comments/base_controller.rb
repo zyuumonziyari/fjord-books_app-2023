@@ -10,7 +10,7 @@ class Comments::BaseController < ApplicationController
     if comment.save
       redirect_to polymorphic_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render_commentable(comment)
+      render_commentable
     end
   end
 

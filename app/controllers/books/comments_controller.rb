@@ -2,8 +2,8 @@
 
 module Books
   class CommentsController < Comments::BaseController
-    def render_commentable(comment)
-      render 'books/show', locals: { book: @commentable, comment: }, status: :unprocessable_entity
+    def render_commentable
+      render 'books/show', status: :unprocessable_entity
     end
 
     private
