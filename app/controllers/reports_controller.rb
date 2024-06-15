@@ -64,8 +64,8 @@ class ReportsController < ApplicationController
 
   def manage_mention(mentioned_ids)
     existing_mentioned_ids = MentionReport.where(mentioning_reports_id: @report.id).pluck(:mentioned_reports_id)
-    unwanted_mentioned_ids = existing_mentioned_ids - mentioned_ids
     wanted_mentioned_ids = mentioned_ids - existing_mentioned_ids
+    unwanted_mentioned_ids = existing_mentioned_ids - mentioned_ids
 
     create_mention(wanted_mentioned_ids) if wanted_mentioned_ids.present?
     destroy_mention(unwanted_mentioned_ids) if unwanted_mentioned_ids.present?
@@ -73,11 +73,11 @@ class ReportsController < ApplicationController
 
   def create_mention(mentioned_ids)
     mentioned_ids.each do |mentioned_id|
-      MentionReport.create(mentioned_reports_id: mentioned_id, mentioning_reports_id: @report.id)
+      MentionReport.create!(mentioned_reports_id: mentioned_id, mentioning_reports_id: @report.id)
     end
   end
 
   def destroy_mention(unwanted_mentioned_ids)
-    MentionReport.where(mentioning_reports_id: @report.id, mentioned_reports_id: unwanted_mentioned_ids).destroy_all
+    MentionReport.where(mentioning_reports_id: @report.id, mentioned_reports_id: unwanted_mentioned_ids).each(&:destroy!)
   end
 end
