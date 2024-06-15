@@ -3,7 +3,7 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[edit update destroy]
 
-  MENTION_PATH = /http:\/\/\[::1\]:3000\/reports\/(\d+)/
+  MENTION_PATH = %r{http://\[::1\]:3000/reports/(\d+)}
 
   def index
     @reports = Report.includes(:user).order(id: :desc).page(params[:page])
@@ -25,8 +25,7 @@ class ReportsController < ApplicationController
 
     if @report.save
       mentioned_ids = scan_mentioned_ids(params[:report][:content])
-      report_id = @report.id
-      manage_mention(report_id, mentioned_ids) if mentioned_ids.present?
+      manage_mention(mentioned_ids) if mentioned_ids.present?
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
@@ -36,8 +35,7 @@ class ReportsController < ApplicationController
   def update
     if @report.update(report_params)
       mentioned_ids = scan_mentioned_ids(params[:report][:content])
-      report_id = @report.id
-      manage_mention(report_id, mentioned_ids)
+      manage_mention(mentioned_ids)
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity
@@ -64,22 +62,22 @@ class ReportsController < ApplicationController
     content.scan(MENTION_PATH).flatten.map(&:to_i)
   end
 
-  def manage_mention(report_id, mentioned_ids)
-    existing_mentioned_ids = MentionReport.where(mentioning_reports_id: report_id).pluck(:mentioned_reports_id)
+  def manage_mention(mentioned_ids)
+    existing_mentioned_ids = MentionReport.where(mentioning_reports_id: @report.id).pluck(:mentioned_reports_id)
     unwanted_mentioned_ids = existing_mentioned_ids - mentioned_ids
     wanted_mentioned_ids = mentioned_ids - existing_mentioned_ids
 
-    create_mention(report_id, wanted_mentioned_ids) if wanted_mentioned_ids.present?
-    destroy_mention(report_id, unwanted_mentioned_ids) if unwanted_mentioned_ids.present?
+    create_mention(wanted_mentioned_ids) if wanted_mentioned_ids.present?
+    destroy_mention(unwanted_mentioned_ids) if unwanted_mentioned_ids.present?
   end
 
-  def create_mention(report_id, mentioned_ids)
+  def create_mention(mentioned_ids)
     mentioned_ids.each do |mentioned_id|
-      MentionReport.create(mentioned_reports_id: mentioned_id, mentioning_reports_id: report_id)
+      MentionReport.create(mentioned_reports_id: mentioned_id, mentioning_reports_id: @report.id)
     end
   end
-    
-  def destroy_mention(report_id, unwanted_mentioned_ids)
-    MentionReport.where(mentioning_reports_id: report_id, mentioned_reports_id: unwanted_mentioned_ids).destroy_all
+
+  def destroy_mention(unwanted_mentioned_ids)
+    MentionReport.where(mentioning_reports_id: @report.id, mentioned_reports_id: unwanted_mentioned_ids).destroy_all
   end
 end
