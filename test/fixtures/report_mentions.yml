@@ -11,7 +11,3 @@ one:
 two:
   mention_to: two
   mentioned_by: one
-
-three:
-  mention_to: two
-  mentioned_by: three
