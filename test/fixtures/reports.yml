@@ -2,15 +2,10 @@
 
 one:
   user: one
-  title: "Report One"
-  content: "This is a report with a link http://localhost:3000/reports/2"
+  title: MyString
+  content: MyText
 
 two:
   user: two
   title: MyString
   content: MyText
-
-three:
-  user: three
-  title: "Report Three"
-  content: "This is a report with a link http://localhost:3000/reports/2"
