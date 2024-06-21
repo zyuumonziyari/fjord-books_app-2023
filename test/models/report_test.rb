@@ -14,10 +14,9 @@ class ReportTest < ActiveSupport::TestCase
 
   test 'should have correct date' do
     report = Report.create(title: 'Hi!', content: 'My name is one!', user: users(:one))
-    expected_date = Date.today.strftime('%Y/%m/%d')
+    expected_date = Time.zone.today.strftime('%Y/%m/%d')
     assert_equal expected_date, report.created_on.strftime('%Y/%m/%d')
   end
-  
 
   test 'should have correct active mentions' do
     assert_equal 1, @report_one.active_mentions.count
