@@ -3,7 +3,9 @@
 one:
   title: MyString
   memo: MyText
+  author: MyAuthor 
 
 two:
-  title: MyString
-  memo: MyText
+  title: MyString2
+  memo: MyText2
+  author: MyAuthor2 

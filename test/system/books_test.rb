@@ -4,42 +4,59 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
+    @book_one = books(:one)
+    @book_two = books(:two)
+    @user = users(:one)
+
+    visit root_url
+    fill_in 'Eメール', with: @user.email
+    fill_in 'パスワード', with: 'password'
+    click_on 'ログイン'
+
+    assert_text 'ログインしました。'
   end
 
   test 'visiting the index' do
     visit books_url
-    assert_selector 'h1', text: 'Books'
+    assert_text '本の一覧'
   end
 
   test 'should create book' do
     visit books_url
-    click_on 'New book'
+    click_on '本の新規作成'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
+    fill_in 'タイトル', with: @book_one.title
+    fill_in 'メモ', with: @book_one.memo
+    fill_in '著者', with: @book_one.author
+    attach_file '画像', Rails.root.join('test', 'fixtures', 'files', "pikachuu.jpg")
 
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+    click_on '登録する'
+
+    assert_text '本が作成されました。'
+    assert_selector 'img[src*="pikachuu.jpg"]'
+    click_on '本の一覧に戻る'
   end
 
-  test 'should update Book' do
-    visit book_url(@book)
-    click_on 'Edit this book', match: :first
+  test 'should update book' do
+    visit book_url(@book_one)
+    click_on 'この本を編集'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
+    fill_in 'タイトル', with: @book_two.title
+    fill_in 'メモ', with: @book_two.memo
+    fill_in '著者', with: @book_two.author
+    attach_file '画像', Rails.root.join('test', 'fixtures', 'files', "kabigon.jpg")
 
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
+    click_on '更新する'
+
+    assert_text '本が更新されました。'
+    assert_selector 'img[src*="kabigon.jpg"]'
+    click_on '本の一覧に戻る'
   end
 
-  test 'should destroy Book' do
-    visit book_url(@book)
-    click_on 'Destroy this book', match: :first
+  test 'should destroy book' do
+    visit book_url(@book_one)
+    click_on 'この本を削除'
 
-    assert_text 'Book was successfully destroyed'
+    assert_text '本が削除されました。'
   end
 end
