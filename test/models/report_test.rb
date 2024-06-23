@@ -8,7 +8,7 @@ class ReportTest < ActiveSupport::TestCase
     @report_two = reports(:two)
   end
 
-  test 'should have correct user' do
+  test 'should have correct editable user' do
     assert_equal users(:one), @report_one.user
   end
 
