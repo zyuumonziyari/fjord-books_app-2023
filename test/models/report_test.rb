@@ -39,7 +39,9 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'should save mentions after save' do
-    new_report = Report.create(title: 'New Mention',content: "http://localhost:3000/reports/#{@report_one.id}, http://localhost:3000/reports/#{@report_one.id}", user: users(:two))
+    new_report = Report.create(title: 'New Mention',
+                               content: "http://localhost:3000/reports/#{@report_one.id}, http://localhost:3000/reports/#{@report_one.id}",
+                               user: users(:two))
     assert_equal 1, new_report.mentioning_reports.count
     assert_equal @report_one, new_report.mentioning_reports.first
   end
