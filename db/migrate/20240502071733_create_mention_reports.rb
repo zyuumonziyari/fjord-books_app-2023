@@ -1,8 +1,8 @@
 class CreateMentionReports < ActiveRecord::Migration[7.0]
   def change
     create_table :mention_reports do |t|
-      t.integer :mentioning_reports_id
-      t.integer :mentioned_reports_id
+      t.integer :mentioning_reports_id, null: false
+      t.integer :mentioned_reports_id, null: false
 
       t.timestamps
     end

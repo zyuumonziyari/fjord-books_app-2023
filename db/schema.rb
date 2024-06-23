@@ -69,6 +69,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_02_071733) do
     t.index ["mentioning_reports_id"], name: "index_mention_reports_on_mentioning_reports_id"
   end
 
+  create_table "report_mentions", force: :cascade do |t|
+    t.integer "mention_to_id", null: false
+    t.integer "mentioned_by_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mention_to_id", "mentioned_by_id"], name: "index_report_mentions_on_mention_to_id_and_mentioned_by_id", unique: true
+    t.index ["mentioned_by_id"], name: "index_report_mentions_on_mentioned_by_id"
+  end
+
   create_table "reports", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
@@ -97,5 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_02_071733) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
+  add_foreign_key "report_mentions", "reports", column: "mention_to_id"
+  add_foreign_key "report_mentions", "reports", column: "mentioned_by_id"
   add_foreign_key "reports", "users"
 end
