@@ -28,11 +28,9 @@ class Report < ApplicationRecord
   MENTION_REGEXP = %r{http://\[::1\]:3000/reports/(\d+)}
 
   def save_mentions
-    ActiveRecord::Base.transaction do
-      mentioning_relationships.destroy_all
-      ids = content.to_s.scan(MENTION_REGEXP).flatten.uniq
-      reports = Report.where(id: ids).where.not(id:)
-      self.mentioning_reports += reports
-    end
+    mentioning_relationships.destroy_all
+    ids = content.to_s.scan(MENTION_REGEXP).flatten.uniq
+    reports = Report.where(id: ids)
+    self.mentioning_reports += reports
   end
 end
