@@ -12,7 +12,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'パスワード', with: 'password'
     click_on 'ログイン'
 
-    assert_text 'ログインしました'
+    assert_text 'ログインしました。'
   end
 
   test 'visiting the index' do
@@ -28,7 +28,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: @report.title
     click_on '登録する'
 
-    assert_text '日報が作成されました'
+    assert_text '日報が作成されました。'
     click_on '日報の一覧に戻る'
   end
 
@@ -40,7 +40,7 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: @report.title
     click_on '更新する'
 
-    assert_text '日報が更新されました'
+    assert_text '日報が更新されました。'
     click_on '日報の一覧に戻る'
   end
 
@@ -48,6 +48,6 @@ class ReportsTest < ApplicationSystemTestCase
     visit report_url(@report)
     click_on 'この日報を削除'
 
-    assert_text '日報が削除されました'
+    assert_text '日報が削除されました。'
   end
 end
