@@ -28,7 +28,7 @@ class BooksTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: @book_one.title
     fill_in 'メモ', with: @book_one.memo
     fill_in '著者', with: @book_one.author
-    attach_file '画像', Rails.root.join('test', 'fixtures', 'files', "pikachuu.jpg")
+    attach_file '画像', Rails.root.join('test/fixtures/files/pikachuu.jpg')
 
     click_on '登録する'
 
@@ -44,7 +44,7 @@ class BooksTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: @book_two.title
     fill_in 'メモ', with: @book_two.memo
     fill_in '著者', with: @book_two.author
-    attach_file '画像', Rails.root.join('test', 'fixtures', 'files', "kabigon.jpg")
+    attach_file '画像', Rails.root.join('test/fixtures/files/kabigon.jpg')
 
     click_on '更新する'
 

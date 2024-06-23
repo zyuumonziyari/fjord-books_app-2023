@@ -26,18 +26,18 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create book' do
     assert_difference('Book.count') do
-      post books_url, params: { 
+      post books_url, params: {
         book: {
           memo: @book_one.memo,
           title: @book_one.title,
           author: @book_one.author,
-          picture: fixture_file_upload(Rails.root.join('test', 'fixtures', 'files', 'pikachuu.jpg'))
+          picture: fixture_file_upload(Rails.root.join('test/fixtures/files/pikachuu.jpg'))
         }
       }
     end
 
     assert_redirected_to book_url(Book.last)
-    assert_equal "本が作成されました。", flash[:notice]
+    assert_equal '本が作成されました。', flash[:notice]
   end
 
   test 'should show book' do
@@ -56,18 +56,18 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
         memo: @book_two.memo,
         title: @book_two.title,
         author: @book_two.author,
-        picture: fixture_file_upload(Rails.root.join('test', 'fixtures', 'files', 'kabigon.jpg'))
+        picture: fixture_file_upload(Rails.root.join('test/fixtures/files/kabigon.jpg'))
       }
     }
     assert_redirected_to book_url(@book_one)
-    assert_equal "本が更新されました。", flash[:notice]
+    assert_equal '本が更新されました。', flash[:notice]
 
     @book_one.reload
     assert_equal 'MyString2', @book_one.title
     assert_equal 'MyText2', @book_one.memo
     assert_equal 'MyAuthor2', @book_one.author
     assert @book_one.picture.file
-    assert_match /kabigon\.jpg$/, @book_one.picture.url
+    assert_match(/kabigon\.jpg$/, @book_one.picture.url)
   end
 
   test 'should destroy book' do
@@ -76,6 +76,6 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to books_url
-    assert_equal "本が削除されました。", flash[:notice]
+    assert_equal '本が削除されました。', flash[:notice]
   end
 end

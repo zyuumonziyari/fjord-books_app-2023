@@ -13,7 +13,6 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-
   test 'should get index' do
     get reports_url
     assert_response :success
@@ -37,14 +36,14 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to report_url(Report.last)
-    assert_equal "日報が作成されました。", flash[:notice]
+    assert_equal '日報が作成されました。', flash[:notice]
   end
 
   test 'should not create report with invalid data' do
     assert_no_difference('Report.count') do
       post reports_url, params: { report: { title: nil, memo: nil, user: nil } }
     end
-  
+
     assert_response :unprocessable_entity
     assert_template :new
   end
@@ -63,12 +62,12 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     patch report_url(@report_one), params: {
       report: {
         content: @report_two.content,
-        title: @report_two.title,
+        title: @report_two.title
       }
     }
 
     assert_redirected_to report_url(@report_one)
-    assert_equal "日報が更新されました。", flash[:notice]
+    assert_equal '日報が更新されました。', flash[:notice]
 
     @report_one.reload
     assert_equal 'MyText2', @report_one.content
@@ -79,7 +78,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Report.count') do
       patch report_url(@report_one), params: { report: { title: nil, memo: nil, user: nil } }
     end
-  
+
     assert_response :unprocessable_entity
     assert_template :edit
   end
@@ -90,6 +89,6 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to reports_url
-    assert_equal "日報が削除されました。", flash[:notice]
+    assert_equal '日報が削除されました。', flash[:notice]
   end
 end
