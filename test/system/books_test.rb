@@ -34,7 +34,6 @@ class BooksTest < ApplicationSystemTestCase
 
     assert_text '本が作成されました。'
     assert_selector 'img[src*="pikachuu.jpg"]'
-    click_on '本の一覧に戻る'
   end
 
   test 'should update book' do
@@ -50,7 +49,6 @@ class BooksTest < ApplicationSystemTestCase
 
     assert_text '本が更新されました。'
     assert_selector 'img[src*="kabigon.jpg"]'
-    click_on '本の一覧に戻る'
   end
 
   test 'should destroy book' do
