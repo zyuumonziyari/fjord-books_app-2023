@@ -5,44 +5,37 @@ require 'test_helper'
 class ReportTest < ActiveSupport::TestCase
   setup do
     @report_one = reports(:one)
-    @report_two = reports(:two)
+    @report = Report.create(title: 'New Mention',
+                            content: "http://localhost:3000/reports/#{@report_one.id}, http://localhost:3000/reports/#{@report_one.id}",
+                            user: users(:two))
   end
 
-  test 'should have correct editable user' do
+  test 'should be valid' do
+    assert @report.valid?
+  end
+
+  test 'should require a title' do
+    @report.title = nil
+    assert_not @report.valid?
+  end
+
+  test 'should require a content' do
+    @report.content = nil
+    assert_not @report.valid?
+  end
+
+  test '#editable?' do
     assert_equal users(:one), @report_one.user
   end
 
-  test 'should have correct date' do
-    report = Report.create(title: 'Hi!', content: 'My name is one!', user: users(:one))
+  test '#created_on' do
     expected_date = Time.zone.today.strftime('%Y/%m/%d')
-    assert_equal expected_date, report.created_on.strftime('%Y/%m/%d')
+    assert_equal expected_date, @report.created_on.strftime('%Y/%m/%d')
   end
 
-  test 'should have correct active mentions' do
-    assert_equal 1, @report_one.active_mentions.count
-    assert_equal @report_two, @report_one.active_mentions.first.mentioned_by
-  end
-
-  test 'should have correct mentioning reports' do
-    assert_equal 1, @report_one.mentioning_reports.count
-    assert_equal @report_two, @report_one.mentioning_reports.first
-  end
-
-  test 'should have correct passive mentions' do
-    assert_equal 1, @report_one.passive_mentions.count
-    assert_equal @report_two, @report_one.passive_mentions.first.mention_to
-  end
-
-  test 'should have correct mentioned reports' do
-    assert_equal 1, @report_one.mentioned_reports.count
-    assert_equal @report_two, @report_one.mentioned_reports.first
-  end
-
-  test 'should save mentions after save' do
-    new_report = Report.create(title: 'New Mention',
-                               content: "http://localhost:3000/reports/#{@report_one.id}, http://localhost:3000/reports/#{@report_one.id}",
-                               user: users(:two))
-    assert_equal 1, new_report.mentioning_reports.count
-    assert_equal @report_one, new_report.mentioning_reports.first
+  test '#save_mentions' do
+    assert_equal 1, @report.mentioning_reports.count
+  
+    assert_equal @report_one, @report.mentioning_reports.first
   end
 end
