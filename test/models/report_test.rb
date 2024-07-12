@@ -29,13 +29,13 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#created_on' do
-    expected_date = Time.zone.today.strftime('%Y/%m/%d')
-    assert_equal expected_date, @report.created_on.strftime('%Y/%m/%d')
+    expected_date = @report.created_at.to_date
+    assert_equal expected_date, @report.created_on
   end
 
   test '#save_mentions' do
     assert_equal 1, @report.mentioning_reports.count
-  
+
     assert_equal @report_one, @report.mentioning_reports.first
   end
 end
