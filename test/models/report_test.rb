@@ -29,7 +29,7 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#created_on' do
-    expected_date = Date.today
+    expected_date = @report.created_at.to_date
     assert_equal expected_date, @report.created_on
   end
 
